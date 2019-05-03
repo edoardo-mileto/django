@@ -1,0 +1,28 @@
+{% if film %}
+    <h1>{{film.titolo}}</h1><br>
+    <img src={{ film.img }} alt="Copertina non trovata" height="500px"><br>
+    <b>Anno Uscita : </b> {{film.annoUscita}}<br>
+    <b>Durata (min) : </b> {{film.durata}}<br>
+    <b>Trama : </b> {{film.trama}}<br>
+    <b>Lingua : </b> {{film.lingua}}<br>
+    <b>Generi : </b> 
+        <ul>
+            {% for genere in film.generi.all %}
+            <li>{{genere.denominazione}}</li>
+            {% endfor %}
+        </ul>
+    <b>Registi : </b> 
+        <ul>
+            {% for regista in film.registi.all %}
+            <li><a href="/Film/Registi/{{ regista.id }}/">{{regista.nome}} {{regista.cognome}}</a></li>
+            {% endfor %}
+        </ul>
+    <b>Attori: </b>
+        <ul>
+            {% for attore in film.attori.all %}
+            <li><a href="/Film/Attori/{{ attore.id }}/">{{attore.nome}}  {{attore.cognome}}</a></li>
+            {% endfor %}
+        </ul>
+{% else %}
+    <p>No film are available.</p>
+{% endif %}

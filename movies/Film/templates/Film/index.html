@@ -1,0 +1,11 @@
+{% if latest_film_list %}
+    <ul>
+    {% for film in latest_film_list %}
+        <a href="/Film/{{ film.id }}/">
+            <img src={{ film.img }} alt="Copertina non trovata" height="500px">
+        </a>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No film are available.</p>
+{% endif %}
